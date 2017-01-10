@@ -1,2 +1,0 @@
-# Pyresas
-Resas for python
