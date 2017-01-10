@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-pyresas.context
+resaspy.context
 ~~~~~~~~~~~~
 
 This module implements api context.

@@ -32,12 +32,12 @@ if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
     sys.exit()
 
-packages = [ 'pyresas' ]
+packages = [ 'resaspy' ]
 
 requires = []
 test_requirements = []
 
-with open('pyresas/__init__.py', 'r') as fd:
+with open('resaspy/__init__.py', 'r') as fd:
     version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]',
                         fd.read(), re.MULTILINE).group(1)
 
@@ -48,15 +48,15 @@ with open('README.rst', 'r', 'utf-8') as f:
     readme = f.read()
 
 setup(
-    name='pyresas',
+    name='resaspy',
     version=version,
     description='python for RESAS API.',
     long_description=readme,
     author='Masahiro Wada',
     author_email='argon.argon.argon@gmail.com',
-    url='https://github.com/ar90n/pyresas',
+    url='https://github.com/ar90n/resaspy',
     packages=packages,
-    package_dir={'pyresas': 'pyresas'},
+    package_dir={'resaspy': 'resaspy'},
     license='MIT',
     zip_safe=False,
     classifiers=(

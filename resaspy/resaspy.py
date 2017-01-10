@@ -12,7 +12,7 @@ from .tourism import Tourism
 from .population import Population
 from .municipality import Municipality
 
-class Pyresas( Context ):
+class Resaspy( Context ):
     class Accessor:
         def __init__( self, key, version ):
             self.__key = key
@@ -84,13 +84,13 @@ class Pyresas( Context ):
 
     def __init__( self, key ):
         accessor = self.Accessor( key, 'v1' )
-        super( Pyresas, self ).__init__( accessor )
+        super( Resaspy, self ).__init__( accessor )
 
-        self.__industries = Pyresas.Industries( accessor )
-        self.__jobs = Pyresas.Jobs( accessor )
-        self.__patents = Pyresas.Patents( accessor )
-        self.__regions = Pyresas.Regions( accessor )
-        self.__trade_info_item_types = Pyresas.TradeInfoItemTypes( accessor )
+        self.__industries = Resaspy.Industries( accessor )
+        self.__jobs = Resaspy.Jobs( accessor )
+        self.__patents = Resaspy.Patents( accessor )
+        self.__regions = Resaspy.Regions( accessor )
+        self.__trade_info_item_types = Resaspy.TradeInfoItemTypes( accessor )
 
         self.__industry = Industry( accessor )
         self.__agriculture = Agriculture( accessor )

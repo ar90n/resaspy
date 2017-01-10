@@ -3,12 +3,12 @@
 import unittest
 import os
 
-from pyresas import Pyresas
+from resaspy import Resaspy
 
 class CommonTest( unittest.TestCase ):
     def setUp( self ):
         api_key = os.environ['RESAS_API_KEY']
-        self.pyresas = Pyresas( api_key )
+        self.resaspy = Resaspy( api_key )
 
     def test_prefectures( self ):
         expected = {
@@ -156,7 +156,7 @@ class CommonTest( unittest.TestCase ):
                 "prefName": "沖縄県"
             }]
         }
-        actual = self.pyresas.prefectures()
+        actual = self.resaspy.prefectures()
         self.assertEqual( expected, actual )
         pass
 
@@ -1125,7 +1125,7 @@ class CommonTest( unittest.TestCase ):
                 "bigCityFlag": "0"
             }]
         }
-        actual = self.pyresas.cities( 1 )
+        actual = self.resaspy.cities( 1 )
         self.assertEqual( expected, actual )
         pass
 
@@ -1254,7 +1254,7 @@ class CommonTest( unittest.TestCase ):
                 "oldCityName": "浪岡町"
             }]
         }
-        actual = self.pyresas.old_cities( 2, '02201' )
+        actual = self.resaspy.old_cities( 2, '02201' )
         self.assertEqual( expected, actual )
         pass
 
@@ -1323,7 +1323,7 @@ class CommonTest( unittest.TestCase ):
                 "sicName": "分類不能の産業"
             }]
         }
-        actual = self.pyresas.industries.broad()
+        actual = self.resaspy.industries.broad()
         self.assertEqual( expected, actual )
         pass
 
@@ -1428,7 +1428,7 @@ class CommonTest( unittest.TestCase ):
                 "simcName": "その他の製造業"
             }]
         }
-        actual = self.pyresas.industries.middle( 'E' )
+        actual = self.resaspy.industries.middle( 'E' )
         self.assertEqual( expected, actual )
         pass
 
@@ -1477,7 +1477,7 @@ class CommonTest( unittest.TestCase ):
                 "siscName": "その他のなめし革製品製造業"
             }]
         }
-        actual = self.pyresas.industries.narrow( 20 )
+        actual = self.resaspy.industries.narrow( 20 )
         self.assertEqual( expected, actual )
 
     def test_jobs_broad( self ):
@@ -1521,7 +1521,7 @@ class CommonTest( unittest.TestCase ):
                 "iscoName": "分類不能の職業"
             }]
         }
-        actual = self.pyresas.jobs.broad()
+        actual = self.resaspy.jobs.broad()
         self.assertEqual( expected, actual )
     
     def test_jobs_middle( self ):
@@ -1609,7 +1609,7 @@ class CommonTest( unittest.TestCase ):
                 "ismcoName": "その他の専門的職業従事者"
             }]
         }
-        actual = self.pyresas.jobs.middle( 'B' )
+        actual = self.resaspy.jobs.middle( 'B' )
         self.assertEqual( expected, actual )
     
     def test_patents_broad( self ):
@@ -1644,7 +1644,7 @@ class CommonTest( unittest.TestCase ):
                 "tecName": "電気"
             }]
         }
-        actual = self.pyresas.patents.broad()
+        actual = self.resaspy.patents.broad()
         self.assertEqual( expected, actual )
     
     def test_patents_middle( self ):
@@ -1662,7 +1662,7 @@ class CommonTest( unittest.TestCase ):
                 "themeName": "その他"
             }]
         }
-        actual = self.pyresas.patents.middle( 'H' )
+        actual = self.resaspy.patents.middle( 'H' )
         self.assertEqual( expected, actual )
     
     def test_customs( self ):
@@ -1745,7 +1745,7 @@ class CommonTest( unittest.TestCase ):
                 "customHouseName": "花咲港"
             }]
         }
-        actual = self.pyresas.customs( 1 )
+        actual = self.resaspy.customs( 1 )
         self.assertEqual( expected, actual )
     
     def test_regions_broad( self ):
@@ -1771,7 +1771,7 @@ class CommonTest( unittest.TestCase ):
                 "regionName": "大洋州"
             }]
         }
-        actual = self.pyresas.regions.broad()
+        actual = self.resaspy.regions.broad()
         self.assertEqual( expected, actual )
     
     def test_regions_middle( self ):
@@ -2079,7 +2079,7 @@ class CommonTest( unittest.TestCase ):
                 "remarks": ""
             }]
         }
-        actual = self.pyresas.regions.middle(1)
+        actual = self.resaspy.regions.middle(1)
         self.assertEqual( expected, actual )
     
     def test_regions_agriculture_departements( self ):
@@ -2135,7 +2135,7 @@ class CommonTest( unittest.TestCase ):
                 "sectionName": "農作業請負収入"
             }]
         }
-        actual = self.pyresas.regions.agriculture_departments()
+        actual = self.resaspy.regions.agriculture_departments()
         self.assertEqual( expected, actual )
     
     def test_patents_locations( self ):
@@ -2175,7 +2175,7 @@ class CommonTest( unittest.TestCase ):
                 "longitude": 139.0941925048828
             }]
         }
-        actual = self.pyresas.patents.locations( 11, 11362 )
+        actual = self.resaspy.patents.locations( 11, 11362 )
         self.assertEqual( expected, actual )
     
     def test_trade_info_item_types_broad( self ):
@@ -2246,7 +2246,7 @@ class CommonTest( unittest.TestCase ):
                 "itemName1": "武器及び銃砲弾並びにこれらの部分品及び附属品"
             }]
         }
-        actual = self.pyresas.trade_info_item_types.broad()
+        actual = self.resaspy.trade_info_item_types.broad()
         self.assertEqual( expected, actual )
 
     def test_trade_info_item_types_middle( self ):
@@ -2269,7 +2269,7 @@ class CommonTest( unittest.TestCase ):
                 "itemName2": "雑品"
             }]
         }
-        actual = self.pyresas.trade_info_item_types.middle( 20 )
+        actual = self.resaspy.trade_info_item_types.middle( 20 )
         self.assertEqual( expected, actual )
 
     def test_trade_info_item_types_narrow( self ):
@@ -2326,13 +2326,13 @@ class CommonTest( unittest.TestCase ):
                 "itemName3": "ひげそり前用、ひげそり用又はひげそり後用の調製品、身体用の防臭剤、浴用の調製品、脱毛剤その他の調製香料及び化粧品類（他の項に該当するものを除く。）並びに調製した室内防臭剤（芳香を付けてあるかないか又は消毒作用を有するか有しないかを問わない。）"
             }]
         }
-        actual = self.pyresas.trade_info_item_types.narrow( 6, 33 )
+        actual = self.resaspy.trade_info_item_types.narrow( 6, 33 )
         self.assertEqual( expected, actual )
 
 class IndustryTest( unittest.TestCase ):
     def setUp( self ):
         api_key = os.environ['RESAS_API_KEY']
-        self.pyresas = Pyresas( api_key )
+        self.resaspy = Resaspy( api_key )
         #self.maxDiff = None
 
     def test_industry_patent_list( self ):
@@ -3742,7 +3742,7 @@ class IndustryTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.industry.patent.list( 2014, 1, 13, '-', '-', 1, 1, 0 )
+        actual = self.resaspy.industry.patent.list( 2014, 1, 13, '-', '-', 1, 1, 0 )
         self.assertEqual( expected, actual )
 
     def test_industry_export_from_to( self ):
@@ -4138,7 +4138,7 @@ class IndustryTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.industry.export.from_to( 2010, 1, 2, 1, 1, '-', '-', '-', '-', '-', '-' )
+        actual = self.resaspy.industry.export.from_to( 2010, 1, 2, 1, 1, '-', '-', '-', '-', '-', '-' )
         self.assertEqual( expected, actual )
 
     def test_industry_global_market_per_pref(self):
@@ -4159,7 +4159,7 @@ class IndustryTest( unittest.TestCase ):
                 "simcCode": "20"
             }
         }
-        actual = self.pyresas.industry.global_market.per_pref( 2010, 1, 1, '-', 'E', 20 )
+        actual = self.resaspy.industry.global_market.per_pref( 2010, 1, 1, '-', 'E', 20 )
         self.assertEqual( expected, actual )
 
     def test_industry_power_for_industry( self ):
@@ -4407,7 +4407,7 @@ class IndustryTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.industry.power.for_industry( 2012, 11, 11362, '-')
+        actual = self.resaspy.industry.power.for_industry( 2012, 11, 11362, '-')
         self.assertEqual( expected, actual )
     
     def test_industry_power_for_area(self):
@@ -4728,7 +4728,7 @@ class IndustryTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.industry.power.for_area( 2012, 11, 1, 1, 'E', 20) 
+        actual = self.resaspy.industry.power.for_area( 2012, 11, 1, 1, 'E', 20) 
         self.assertEqual( expected, actual )
     
     def test_industry_power_for_manufacturer_establishments( self ):
@@ -5166,13 +5166,13 @@ class IndustryTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.industry.power.for_manufacturer_establishments( 11, 'E', 20 )
+        actual = self.resaspy.industry.power.for_manufacturer_establishments( 11, 'E', 20 )
         self.assertEqual( expected, actual )
 
 class AgricultureTest( unittest.TestCase ):
     def setUp( self ):
         api_key = os.environ['RESAS_API_KEY']
-        self.pyresas = Pyresas( api_key )
+        self.resaspy = Resaspy( api_key )
         #self.maxDiff = None
 
     def test_agriculture_sales_ship_value( self ):
@@ -5250,7 +5250,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.agriculture.sales.ship_value( 11, 11362, '03' )
+        actual = self.resaspy.agriculture.sales.ship_value( 11, 11362, '03' )
         self.assertEqual( expected, actual )
 
     def test_agriculture_sales_ship_ratio(self):
@@ -5331,7 +5331,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.agriculture.sales.ship_ratio( 11, 11362, '03', 3 )
+        actual = self.resaspy.agriculture.sales.ship_ratio( 11, 11362, '03', 3 )
         self.assertEqual( expected, actual )
 
     def test_agriculture_land_for_stacked( self ):
@@ -5357,7 +5357,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.agriculture.land.for_stacked( 11, 11362, '03', 1, 1, 3,  3 ) #? sectionCode ??
+        actual = self.resaspy.agriculture.land.for_stacked( 11, 11362, '03', 1, 1, 3,  3 ) #? sectionCode ??
         self.assertEqual( expected, actual )
 
     def test_agriculture_land_ratio( self ):
@@ -5438,7 +5438,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.agriculture.land.ratio( 11, 11362, '03', 3 )
+        actual = self.resaspy.agriculture.land.ratio( 11, 11362, '03', 3 )
         self.assertEqual( expected, actual )
 
     def test_agriculture_land_for_mobility( self ):
@@ -5463,7 +5463,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.agriculture.land.for_mobility( 11, 11362, '03', 3, 3 )
+        actual = self.resaspy.agriculture.land.for_mobility( 11, 11362, '03', 3, 3 )
         self.assertEqual( expected, actual )
 
     def test_agriculture_land_for_abandonment( self ):
@@ -5487,7 +5487,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.agriculture.land.for_abandonment( 11, 11362, '03', 3 )
+        actual = self.resaspy.agriculture.land.for_abandonment( 11, 11362, '03', 3 )
         self.assertEqual( expected, actual )
 
     def test_agriculture_all_for_stacked( self ):
@@ -5568,7 +5568,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.agriculture.all.for_stacked( 2010, 11, 11362, '03')
+        actual = self.resaspy.agriculture.all.for_stacked( 2010, 11, 11362, '03')
         self.assertEqual( expected, actual )
 
     def test_agriculture_crops_working_days( self ):
@@ -5591,7 +5591,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.agriculture.crops.working_days( 11, 11362, '03')
+        actual = self.resaspy.agriculture.crops.working_days( 11, 11362, '03')
         self.assertEqual( expected, actual )
 
     def test_agriculture_crops_sales( self ):
@@ -5614,7 +5614,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.agriculture.crops.sales( 11, 11362, '03')
+        actual = self.resaspy.agriculture.crops.sales( 11, 11362, '03')
         self.assertEqual( expected, actual )
 
     def test_agriculture_crops_farmers_age_structure( self ):
@@ -5743,7 +5743,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.agriculture.crops.farmers_age_structure( 11, 11362, '03', 1, 3, 3 ) # oldCityCode, genderType ???
+        actual = self.resaspy.agriculture.crops.farmers_age_structure( 11, 11362, '03', 1, 3, 3 ) # oldCityCode, genderType ???
         self.assertEqual( expected, actual )
 
     def test_agriculture_crops_farmers_average_age( self ):
@@ -5769,7 +5769,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.agriculture.crops.farmers_average_age( 11, 11362, '03', 1, 3, 3 ) # oldCityCode, genderType ???
+        actual = self.resaspy.agriculture.crops.farmers_average_age( 11, 11362, '03', 1, 3, 3 ) # oldCityCode, genderType ???
         self.assertEqual( expected, actual )
 
     def test_agriculture_crops_related_business( self ):
@@ -5855,7 +5855,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.agriculture.crops.related_business( 11, '-', '-' )
+        actual = self.resaspy.agriculture.crops.related_business( 11, '-', '-' )
         self.assertEqual( expected, actual )
 
     def test_agriculture_crops_average_of_corporate( self ):
@@ -5879,7 +5879,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.agriculture.crops.average_of_corporate( 11, 11362, '-', 3 ) #matter , oldCityCode
+        actual = self.resaspy.agriculture.crops.average_of_corporate( 11, 11362, '-', 3 ) #matter , oldCityCode
         self.assertEqual( expected, actual )
 
     def test_forestry_income_for_stacked( self ):
@@ -5902,7 +5902,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.forestry.income.for_stacked( 11, 11362)
+        actual = self.resaspy.forestry.income.for_stacked( 11, 11362)
         self.assertEqual( expected, actual )
 
     def test_forestry_income_for_sales( self ):
@@ -5923,7 +5923,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.forestry.income.for_sales( 11, 11362)
+        actual = self.resaspy.forestry.income.for_sales( 11, 11362)
         self.assertEqual( expected, actual )
 
     def test_forestry_income_for_contract_revenue( self ):
@@ -5944,7 +5944,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.forestry.income.for_contract_revenue( 11, 11362)
+        actual = self.resaspy.forestry.income.for_contract_revenue( 11, 11362)
         self.assertEqual( expected, actual )
 
     def test_forestry_income_for_sales_ratio( self ):
@@ -6023,7 +6023,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.forestry.income.for_sales_ratio( '-', '-', 3)
+        actual = self.resaspy.forestry.income.for_sales_ratio( '-', '-', 3)
         self.assertEqual( expected, actual )
 
     def test_forestry_income_for_contract_revenue_ratio( self ):
@@ -6102,7 +6102,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.forestry.income.for_contract_revenue_ratio( '-', '-', 3)
+        actual = self.resaspy.forestry.income.for_contract_revenue_ratio( '-', '-', 3)
         self.assertEqual( expected, actual )
 
     def test_forestry_income_all_fortfolio( self ):
@@ -6159,7 +6159,7 @@ class AgricultureTest( unittest.TestCase ):
                 "otherscount": 0
             }
         }
-        actual = self.pyresas.forestry.income.all_portfolio( 2010, 11, 11362, 1 )
+        actual = self.resaspy.forestry.income.all_portfolio( 2010, 11, 11362, 1 )
         self.assertEqual( expected, actual )
 
     def test_forestry_income_all_for_stacked( self ):
@@ -6251,7 +6251,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.forestry.income.all_for_stacked( 11, 11362 )
+        actual = self.resaspy.forestry.income.all_for_stacked( 11, 11362 )
         self.assertEqual( expected, actual )
 
     def test_fishery_sea_staple( self ):
@@ -6399,7 +6399,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.fishery.sea.staple( 13, '-' )
+        actual = self.resaspy.fishery.sea.staple( 13, '-' )
         self.assertEqual( expected, actual )
 
     def test_fishery_sea_total_sales( self ):
@@ -6419,7 +6419,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.fishery.sea.total_sales( 13, '-' )
+        actual = self.resaspy.fishery.sea.total_sales( 13, '-' )
         self.assertEqual( expected, actual )
 
     def test_fishery_sea_management_unit_sales( self ):
@@ -6440,7 +6440,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.fishery.sea.management_unit_sales( 13, '-', 3 )
+        actual = self.resaspy.fishery.sea.management_unit_sales( 13, '-', 3 )
         self.assertEqual( expected, actual )
 
     def test_fishery_sea_sales( self ):
@@ -6535,7 +6535,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.fishery.sea.sales( 11, 11362, 3 )
+        actual = self.resaspy.fishery.sea.sales( 11, 11362, 3 )
         self.assertEqual( expected, actual )
 
     def test_fishery_sea_ship_value( self ):
@@ -6619,7 +6619,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.fishery.sea.ship_value( 13, '-' )
+        actual = self.resaspy.fishery.sea.ship_value( 13, '-' )
         self.assertEqual( expected, actual )
 
     def test_fishery_sea_ship_ratio( self ):
@@ -6706,7 +6706,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.fishery.sea.ship_ratio( 13, '-', 3 )
+        actual = self.resaspy.fishery.sea.ship_ratio( 13, '-', 3 )
         self.assertEqual( expected, actual )
 
     def test_fishery_sea_aquaculture_total_sales( self ):
@@ -6726,7 +6726,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.fishery.sea.aquaculture_total_sales( 13, '-' )
+        actual = self.resaspy.fishery.sea.aquaculture_total_sales( 13, '-' )
         self.assertEqual( expected, actual )
 
     def test_fishery_sea_aquaculture_management_unit_sales( self ):
@@ -6747,7 +6747,7 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.fishery.sea.aquaculture_management_unit_sales( 13, '-', 3 )
+        actual = self.resaspy.fishery.sea.aquaculture_management_unit_sales( 13, '-', 3 )
         self.assertEqual( expected, actual )
 
     def test_fishery_sea_aquaculture_sales( self ):
@@ -6842,13 +6842,13 @@ class AgricultureTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.fishery.sea.aquaculture_sales( 11, 11362, 3 )
+        actual = self.resaspy.fishery.sea.aquaculture_sales( 11, 11362, 3 )
         self.assertEqual( expected, actual )
 
 class TourismTest( unittest.TestCase ):
     def setUp( self ):
         api_key = os.environ['RESAS_API_KEY']
-        self.pyresas = Pyresas( api_key )
+        self.resaspy = Resaspy( api_key )
         #self.maxDiff = None
 
     def test_tourism_foreigners_for_from( self ):
@@ -7342,7 +7342,7 @@ class TourismTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.tourism.foreigners.for_from( 2012, 11, 1 )
+        actual = self.resaspy.tourism.foreigners.for_from( 2012, 11, 1 )
         self.assertEqual( expected, actual )
 
     def test_tourism_foreigners_for_to(self):
@@ -7397,7 +7397,7 @@ class TourismTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.tourism.foreigners.for_to( 2014, 11, 1, '-', 1 )
+        actual = self.resaspy.tourism.foreigners.for_to( 2014, 11, 1, '-', 1 )
         self.assertEqual( expected, actual )
 
     def test_tourism_attractions( self ):
@@ -8307,13 +8307,13 @@ class TourismTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.tourism.attractions( 12, '-' )
+        actual = self.resaspy.tourism.attractions( 12, '-' )
         self.assertEqual( expected, actual )
 
 class PopulationTest( unittest.TestCase ):
     def setUp( self ):
         api_key = os.environ['RESAS_API_KEY']
-        self.pyresas = Pyresas( api_key )
+        self.resaspy = Resaspy( api_key )
 
     def test_population_nature( self ):
         expected = {
@@ -8420,7 +8420,7 @@ class PopulationTest( unittest.TestCase ):
                 }
             }
         }
-        actual = self.pyresas.population.nature( 11, 11362, 30, '-' )
+        actual = self.resaspy.population.nature( 11, 11362, 30, '-' )
         self.assertEqual( expected, actual )
 
     def test_population_composition_per_year( self ):
@@ -8638,7 +8638,7 @@ class PopulationTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.population.composition.per_year( 11, 11362 )
+        actual = self.resaspy.population.composition.per_year( 11, 11362 )
         self.assertEqual( expected, actual )
 
     def test_population_composition_pyramid( self ):
@@ -8895,7 +8895,7 @@ class PopulationTest( unittest.TestCase ):
                 }
             }
         }
-        actual = self.pyresas.population.composition.pyramid( 11, 11362, 2030, 1980 )
+        actual = self.resaspy.population.composition.pyramid( 11, 11362, 2030, 1980 )
         self.assertEqual( expected, actual )
 
     def test_population_sum_per_year( self ):
@@ -9103,7 +9103,7 @@ class PopulationTest( unittest.TestCase ):
                 }
             }
         }
-        actual = self.pyresas.population.sum.per_year( 11, 11362 )
+        actual = self.resaspy.population.sum.per_year( 11, 11362 )
         self.assertEqual( expected, actual )
 
     def test_population_sum_estimate( self ):
@@ -9399,7 +9399,7 @@ class PopulationTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.population.sum.estimate( 11, 11362 )
+        actual = self.resaspy.population.sum.estimate( 11, 11362 )
         self.assertEqual( expected, actual )
 
     def test_population_future_cities( self ):
@@ -10349,13 +10349,13 @@ class PopulationTest( unittest.TestCase ):
                  }]
              }
          }
-        actual = self.pyresas.population.future.cities( 2040, 1 )
+        actual = self.resaspy.population.future.cities( 2040, 1 )
         self.assertEqual( expected, actual )
 
 class MunicipalityTest( unittest.TestCase ):
     def setUp( self ):
         api_key = os.environ['RESAS_API_KEY']
-        self.pyresas = Pyresas( api_key )
+        self.resaspy = Resaspy( api_key )
         #self.maxDiff = None
 
     def test_municipality_company_per_year( self ):
@@ -10382,7 +10382,7 @@ class MunicipalityTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.municipality.company.per_year( 11, 11362, 'E', 20 )
+        actual = self.resaspy.municipality.company.per_year( 11, 11362, 'E', 20 )
         self.assertEqual( expected, actual )
 
     def test_municipality_plant_per_year( self ):
@@ -10409,7 +10409,7 @@ class MunicipalityTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.municipality.plant.per_year( 11, 11362, 'E', 20 )
+        actual = self.resaspy.municipality.plant.per_year( 11, 11362, 'E', 20 )
         self.assertEqual( expected, actual )
 
     def test_municipality_foundation_per_year( self ):
@@ -10426,7 +10426,7 @@ class MunicipalityTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.municipality.foundation.per_year( 11, 11362 )
+        actual = self.resaspy.municipality.foundation.per_year( 11, 11362 )
         self.assertEqual( expected, actual )
 
     def test_municipality_taxes_per_year( self ):
@@ -10461,7 +10461,7 @@ class MunicipalityTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.municipality.taxes.per_year( 11, 11362 )
+        actual = self.resaspy.municipality.taxes.per_year( 11, 11362 )
         self.assertEqual( expected, actual )
 
     def test_municipality_job_per_year( self ):
@@ -10638,7 +10638,7 @@ class MunicipalityTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.municipality.job.per_year( 11, 'B', '06' )
+        actual = self.resaspy.municipality.job.per_year( 11, 'B', '06' )
         self.assertEqual( expected, actual )
 
     def test_municipality_manufacture_per_year( self ):
@@ -10665,7 +10665,7 @@ class MunicipalityTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.municipality.manufacture.per_year( 10, 12217, 'E', 10 )
+        actual = self.resaspy.municipality.manufacture.per_year( 10, 12217, 'E', 10 )
         self.assertEqual( expected, actual )
 
     def test_municipality_employee_per_year( self ):
@@ -10692,7 +10692,7 @@ class MunicipalityTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.municipality.employee.per_year( 11, 11362, 'E', 20 )
+        actual = self.resaspy.municipality.employee.per_year( 11, 11362, 'E', 20 )
         self.assertEqual( expected, actual )
 
     def test_municipality_value_per_year(self):
@@ -10714,7 +10714,7 @@ class MunicipalityTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.municipality.value.per_year( 2012, 13, 13101, 'I', 51 )
+        actual = self.resaspy.municipality.value.per_year( 2012, 13, 13101, 'I', 51 )
         self.assertEqual( expected, actual )
 
     def test_municipality_labor_per_year( self ):
@@ -10734,7 +10734,7 @@ class MunicipalityTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.municipality.labor.per_year( 2012, 13, 13105, 'I', 51 )
+        actual = self.resaspy.municipality.labor.per_year( 2012, 13, 13105, 'I', 51 )
         self.assertEqual( expected, actual )
 
     def test_municipality_surplus_per_year( self ):
@@ -10752,7 +10752,7 @@ class MunicipalityTest( unittest.TestCase ):
                 "data": []
             }
         }
-        actual = self.pyresas.municipality.surplus.per_year( 2012, 11, 11362, 'I', 20 )
+        actual = self.resaspy.municipality.surplus.per_year( 2012, 11, 11362, 'I', 20 )
         self.assertEqual( expected, actual )
 
     def test_municipality_wages_per_year( self ):
@@ -10783,7 +10783,7 @@ class MunicipalityTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.municipality.wages.per_year( 11, '-', '-', 10 )
+        actual = self.resaspy.municipality.wages.per_year( 11, '-', '-', 10 )
         self.assertEqual( expected, actual )
 
     def test_municipality_sales_per_year( self ):
@@ -10819,7 +10819,7 @@ class MunicipalityTest( unittest.TestCase ):
                 }]
             }
         }
-        actual = self.pyresas.municipality.sales.per_year( 13, '-', '-', '-', 1 )
+        actual = self.resaspy.municipality.sales.per_year( 13, '-', '-', '-', 1 )
         self.assertEqual( expected, actual )
 
 if __name__ == '__main__':

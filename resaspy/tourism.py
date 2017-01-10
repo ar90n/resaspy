@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-pyresas.tourism
+resaspy.tourism
 ~~~~~~~~~~~~
 
 This module implements accessor for tourism API.

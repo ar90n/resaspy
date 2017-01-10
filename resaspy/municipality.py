@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-pyresas.municiplality
+resaspy.municiplality
 ~~~~~~~~~~~~
 
 This module implements accessor for municiplality API.

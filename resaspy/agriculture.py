@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-pyresas.agriculture
+resaspy.agriculture
 ~~~~~~~~~~~~
 
 This module implements accessor for atriculture API.

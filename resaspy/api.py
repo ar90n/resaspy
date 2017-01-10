@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-pyresas.api
+resaspy.api
 ~~~~~~~~~~~~
 
 This module implements accessor for API.

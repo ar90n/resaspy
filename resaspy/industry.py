@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-pyresas.industry
+resaspy.industry
 ~~~~~~~~~~~~
 
 This module implements accessor for industry API.

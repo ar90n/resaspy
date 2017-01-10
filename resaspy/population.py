@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-pyresas.population
+resaspy.population
 ~~~~~~~~~~~~
 
 This module implements accessor for population API.
