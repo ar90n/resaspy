@@ -1,7 +1,8 @@
 pyresas: python for RESAS API
 =========================
 
-pyresasはRESAS API()をpythonから利用するためのライブラリです.
+pyresasはRESAS APIをpythonから利用するためのライブラリです.
+
 以下のようにAPIをpythonオブジェクトにマッピングします．
 
 .. code-block:: python
