@@ -17,11 +17,11 @@ class Population( Context ):
                 'cityCode': city_code,
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ), add_area ) )
 
             return self.fetch( 'perYear', param )
 
-        def pyramid( self, pref_code, city_code, year_left, year_right, add_area = [] ):
+        def pyramid( self, pref_code, city_code, year_left, year_right, add_area = None ):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
@@ -29,7 +29,7 @@ class Population( Context ):
                 'yearRight': year_right,
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ), add_area ) )
 
             return self.fetch( 'pyramid', param )
 
@@ -40,7 +40,7 @@ class Population( Context ):
                 'cityCode': city_code,
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ), add_area ) )
 
             return self.fetch( 'perYear', param )
 
@@ -50,7 +50,7 @@ class Population( Context ):
                 'cityCode': city_code,
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ), add_area ) )
 
             return self.fetch( 'estimate', param )
 

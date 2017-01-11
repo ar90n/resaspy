@@ -11,6 +11,7 @@ from .agriculture import Agriculture, Fishery, Forestry
 from .tourism import Tourism
 from .population import Population
 from .municipality import Municipality
+from .partner import Partner
 
 class Resaspy( Context ):
     class Accessor:
@@ -99,6 +100,7 @@ class Resaspy( Context ):
         self.__tourism = Tourism( accessor )
         self.__population = Population( accessor )
         self.__municipality = Municipality( accessor )
+        self.__partner = Partner( accessor )
 
     def prefectures(self):
         return self.fetch( 'prefectures' )
@@ -162,3 +164,7 @@ class Resaspy( Context ):
     @property
     def municipality(self):
         return self.__municipality
+
+    @property
+    def partner(self):
+        return self.__partner

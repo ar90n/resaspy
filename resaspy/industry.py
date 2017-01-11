@@ -23,7 +23,7 @@ class Industry( Context ):
                 'offset': offset
             }
             if add_tec is not None:
-                param['addTec'] = ','.join( map( lambda tec: '_'.join( map( str, tec ) ) ) )
+                param['addTec'] = ','.join( map( lambda tec: '_'.join( map( str, tec ) ), add_tec ) )
 
             return  self.fetch( 'list', param )
 
@@ -76,7 +76,7 @@ class Industry( Context ):
                 'simcCode': simc_code
             }
             if add_industry is not None:
-                param['addIndustry'] = ','.join( map( lambda industry: '_'.join( map( str, industry ) ) ) )
+                param['addIndustry'] = ','.join( map( lambda industry: '_'.join( map( str, industry ) ) ,add_industry ) )
 
             return self.fetch( 'forArea', param )
 
@@ -87,7 +87,7 @@ class Industry( Context ):
                 'simcCode': simc_code
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ), add_area ) )
 
             return self.fetch( 'forManufacturerEstablishments', param )
 
