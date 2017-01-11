@@ -12,38 +12,46 @@ from .context import Context
 class Population( Context ):
     class Composition( Context ):
         def per_year( self, pref_code, city_code, add_area = [] ):
-            #TODO add area_code treatment code
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
             }
+            if add_area is not None:
+                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+
             return self.fetch( 'perYear', param )
 
         def pyramid( self, pref_code, city_code, year_left, year_right, add_area = [] ):
-            #TODO add area_code treatment code
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
                 'yearLeft': year_left,
                 'yearRight': year_right,
             }
+            if add_area is not None:
+                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+
             return self.fetch( 'pyramid', param )
 
     class Sum( Context ):
         def per_year( self, pref_code, city_code, add_area = [] ):
-            #TODO add area_code treatment code
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
             }
+            if add_area is not None:
+                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+
             return self.fetch( 'perYear', param )
 
         def estimate( self, pref_code, city_code, add_area = [] ):
-            #TODO add area_code treatment code
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
             }
+            if add_area is not None:
+                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+
             return self.fetch( 'estimate', param )
 
     class Future( Context ):

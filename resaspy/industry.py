@@ -12,7 +12,6 @@ from .context import Context
 class Industry( Context ):
     class Patent( Context ):
         def list( self, year, mode, pref_code, city_code, patent_holder_id, sort1, sort2, offset, add_tec = [] ):
-            # TODO: add add_tec treatment code
             param = {
                 'year': year,
                 'mode': mode,
@@ -23,6 +22,9 @@ class Industry( Context ):
                 'sort2': sort2,
                 'offset': offset
             }
+            if add_tec is not None:
+                param['addTec'] = ','.join( map( lambda tec: '_'.join( map( str, tec ) ) ) )
+
             return  self.fetch( 'list', param )
 
     class Export( Context ):
@@ -65,7 +67,6 @@ class Industry( Context ):
             return self.fetch( 'forIndustry', param );
 
         def for_area( self, year, pref_code, area_type, disp_type, sic_code, simc_code, add_industry = [] ):
-            #TODO: add add_industry treatment code
             param = {
                 'year': year,
                 'prefCode': pref_code,
@@ -74,15 +75,20 @@ class Industry( Context ):
                 'sicCode': sic_code,
                 'simcCode': simc_code
             }
+            if add_industry is not None:
+                param['addIndustry'] = ','.join( map( lambda industry: '_'.join( map( str, industry ) ) ) )
+
             return self.fetch( 'forArea', param )
 
         def for_manufacturer_establishments( self, pref_code, sic_code, simc_code, add_area = [] ):
-            #TODO: add add_area treatment code
             param = {
                 'prefCode': pref_code,
                 'sicCode': sic_code,
                 'simcCode': simc_code
             }
+            if add_area is not None:
+                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+
             return self.fetch( 'forManufacturerEstablishments', param )
 
     def __init__( self, accessor, parent_category = '' ):

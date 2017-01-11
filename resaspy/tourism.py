@@ -11,17 +11,18 @@ from .context import Context
 
 class Tourism( Context ):
     class Foreigners( Context ):
-        def for_from( self, year, pref_code, purpose, add_area = [] ):
-            #TODO add area_code treatment code
+        def for_from( self, year, pref_code, purpose, add_area = None ):
             param = {
                 'year': year,
                 'prefCode': pref_code,
                 'purpose': purpose,
             }
+            if add_area is not None:
+                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+
             return self.fetch( 'forFrom', param )
 
         def for_to( self, year, pref_code, region_code, country_code, purpose ):
-            #TODO add area_code treatment code
             param = {
                 'year': year,
                 'prefCode': pref_code,
@@ -29,6 +30,7 @@ class Tourism( Context ):
                 'countryCode': country_code,
                 'purpose': purpose
             }
+
             return self.fetch( 'forTo', param )
 
     def __init__( self, accessor, parent_category = '' ):
@@ -45,4 +47,5 @@ class Tourism( Context ):
             'prefCode': pref_code,
             'cityCode': city_code
         }
+
         return self.fetch( 'attractions', param )
