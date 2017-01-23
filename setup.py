@@ -75,6 +75,7 @@ setup(
     tests_require=test_requirements,
     install_requires=[
         'requests',
+        'requests-cache',
     ],
 )
 

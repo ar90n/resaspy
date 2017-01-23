@@ -4,6 +4,7 @@
 This module implements context class.
 """
 import requests
+import requests_cache
 
 from .context import Context
 from .industry import Industry
@@ -15,10 +16,12 @@ from .partner import Partner
 
 class Resaspy( Context ):
     class Accessor:
-        def __init__( self, key, version ):
+        def __init__( self, key, version, cache_name = None ):
             self.__key = key
             self.__version = version
             self.__endpoint = 'https://opendata.resas-portal.go.jp'
+            if cache_name is not None:
+                requests_cache.install_cache(cache_name);
 
         def fetch( self, resource, params = {} ):
             api_url = '%s/api/%s/%s' % ( self.__endpoint, self.__version, resource )
@@ -83,8 +86,8 @@ class Resaspy( Context ):
     def category( self ):
         return ''
 
-    def __init__( self, key ):
-        accessor = self.Accessor( key, 'v1' )
+    def __init__( self, key, cache_name = None ):
+        accessor = self.Accessor( key, 'v1', cache_name )
         super( Resaspy, self ).__init__( accessor )
 
         self.__industries = Resaspy.Industries( accessor )

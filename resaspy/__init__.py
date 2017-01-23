@@ -14,7 +14,7 @@ usage:
 """
 
 __title__ = 'resaspy'
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 __build__ = 0x021204
 __author__ = 'Masahiro Wada'
 __license__ = 'MIT'
