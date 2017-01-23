@@ -17,12 +17,17 @@ class Context:
         return ''.join( category_chars )
 
     def __init__( self, accessor, parent_category = '' ):
-        self.__accessor = accessor
-        self.__full_category = parent_category + '/' + self.category
+        self._accessor = accessor
+        self._full_category = parent_category + '/' + self.category
 
     def fetch( self, resource, params = {} ):
-        api_resource = self.__full_category + '/' + resource
+        api_resource = self._full_category + '/' + resource
         beg = re.search( '[^/]', api_resource ).start()
         api_resource = api_resource[beg:]
 
-        return self.__accessor.fetch( api_resource, params )
+        return self._accessor.fetch( api_resource, params )
+
+class DisableCacheContext( Context ):
+    def fetch( self, resource, params = {} ):
+        with self._accessor.disable_cache():
+            return super( DisableCacheContext, self ).fetch( resource, params )

@@ -23,9 +23,12 @@ class Resaspy( Context ):
             if cache_name is not None:
                 requests_cache.install_cache(cache_name);
 
-        def fetch( self, resource, params = {} ):
+        def fetch( self, resource, params = {}, enable_cache = True ):
             api_url = '%s/api/%s/%s' % ( self.__endpoint, self.__version, resource )
             return requests.get( api_url, params = params,  headers = { 'X-API-KEY': self.__key } ).json()
+
+        def disable_cache(self):
+            return requests_cache.disabled()
 
     class Industries( Context ):
         def broad(self):

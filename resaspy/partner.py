@@ -7,10 +7,10 @@ resaspy.partner
 This module implements accessor for partner API.
 """
 
-from .context import Context
+from .context import DisableCacheContext
 
-class Partner( Context ):
-    class Navitime( Context ):
+class Partner( DisableCacheContext ):
+    class Navitime( DisableCacheContext ):
         def congestion( self, node = None, node_type = None, direction = None, ratio = None, date_from = None, date_to = None ):
             param = {}
             if node is not None:
@@ -28,7 +28,7 @@ class Partner( Context ):
 
             return self.fetch( 'congestion', param )
 
-    class Nightley( Context ):
+    class Nightley( DisableCacheContext ):
         def cities( self, target_type, pref_code, year, season_code, period_of_time ):
             param = {
                 'targetType': target_type,
@@ -51,7 +51,7 @@ class Partner( Context ):
 
             return self.fetch( 'places', param )
 
-    class Urecon( Context ):
+    class Urecon( DisableCacheContext ):
         def search( self, q, category_code = None, fields = None):
             param = { 'q': q }
             if category_code is not None:
@@ -121,7 +121,7 @@ class Partner( Context ):
 
             return self.fetch( 'ranking', param )
 
-    class Experian( Context ):
+    class Experian( DisableCacheContext ):
         def mosaic_group( self, pref_code, city_code ):
             param = {
                 'prefCode': pref_code,
@@ -130,7 +130,7 @@ class Partner( Context ):
 
             return self.fetch( 'mosaicGroup', param )
 
-    class Asutomo( Context ):
+    class Asutomo( DisableCacheContext ):
         def event( self, page = None, count = None, kwd = None, kwd_mode = None, cities = None, disable = None, lat = None, lon = None, dist = None, event_id = None ):
             param = {}
             if page is not None:
@@ -156,7 +156,7 @@ class Partner( Context ):
 
             return self.fetch( 'event', param )
 
-    class Docomo( Context ):
+    class Docomo( DisableCacheContext ):
         def inbound( self, year, month, pref_code, period_of_time ):
             param = {
                 'year': year,
