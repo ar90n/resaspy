@@ -9,20 +9,21 @@ This module implements accessor for atriculture API.
 
 from .context import Context
 
-class Agriculture( Context ):
-    class Sales( Context ):
-        def ship_value( self, pref_code, city_code, old_city_code, add_area = None ):
+
+class Agriculture(Context):
+    class Sales(Context):
+        def ship_value(self, pref_code, city_code, old_city_code, add_area=None):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
                 'oldCityCode': old_city_code,
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
 
-            return self.fetch( 'shipValue', param )
+            return self.fetch('shipValue', param)
 
-        def ship_ratio( self, pref_code, city_code, old_city_code, matter, add_area = None ):
+        def ship_ratio(self, pref_code, city_code, old_city_code, matter, add_area=None):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
@@ -30,12 +31,12 @@ class Agriculture( Context ):
                 'matter': matter
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
 
-            return self.fetch( 'shipRatio', param )
+            return self.fetch('shipRatio', param)
 
-    class Land( Context ):
-        def for_stacked( self, pref_code, city_code, old_city_code, section_code, disp_type, agricultural_land_type, matter, add_area = None ):
+    class Land(Context):
+        def for_stacked(self, pref_code, city_code, old_city_code, section_code, disp_type, agricultural_land_type, matter, add_area=None):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
@@ -46,11 +47,11 @@ class Agriculture( Context ):
                 'matter': matter
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
 
-            return self.fetch( 'forStacked', param )
+            return self.fetch('forStacked', param)
 
-        def ratio( self, pref_code, city_code, old_city_code, matter, add_area = None ):
+        def ratio(self, pref_code, city_code, old_city_code, matter, add_area=None):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
@@ -58,11 +59,11 @@ class Agriculture( Context ):
                 'matter': matter
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
 
-            return self.fetch( 'Ratio', param )
+            return self.fetch('Ratio', param)
 
-        def for_mobility( self, pref_code, city_code, old_city_code, agricultural_lang_type, matter ):
+        def for_mobility(self, pref_code, city_code, old_city_code, agricultural_lang_type, matter):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
@@ -71,9 +72,9 @@ class Agriculture( Context ):
                 'matter': matter
             }
 
-            return self.fetch( 'forMobility', param )
+            return self.fetch('forMobility', param)
 
-        def for_abandonment( self, pref_code, city_code, old_city_code, matter ):
+        def for_abandonment(self, pref_code, city_code, old_city_code, matter):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
@@ -81,10 +82,10 @@ class Agriculture( Context ):
                 'matter': matter
             }
 
-            return self.fetch( 'forAbandonment', param )
+            return self.fetch('forAbandonment', param)
 
-    class All( Context ):
-        def for_stacked( self, year, pref_code, city_code, old_city_code, add_area = None ):
+    class All(Context):
+        def for_stacked(self, year, pref_code, city_code, old_city_code, add_area=None):
             param = {
                 'year': year,
                 'prefCode': pref_code,
@@ -92,59 +93,47 @@ class Agriculture( Context ):
                 'oldCityCode': old_city_code,
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(
+                    map(lambda area: '_'.join(map(str, area))))
 
-            return self.fetch( 'forStacked', param )
+            return self.fetch('forStacked', param)
 
-    class Crops( Context ):
-        def working_days( self, pref_code, city_code, old_city_code, add_area = None ):
+    class Crops(Context):
+        def working_days(self, pref_code, city_code, old_city_code, add_area=None):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
                 'oldCityCode': old_city_code,
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
 
-            return self.fetch( 'workingDays', param )
+            return self.fetch('workingDays', param)
 
-        def working_days( self,  pref_code, city_code, old_city_code, add_area = None ):
+        def working_days(self,  pref_code, city_code, old_city_code, add_area=None):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
                 'oldCityCode': old_city_code,
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
 
-            return self.fetch( 'workingDays', param )
+            return self.fetch('workingDays', param)
 
-        def sales( self, pref_code, city_code, old_city_code, add_area = None ):
+        def sales(self, pref_code, city_code, old_city_code, add_area=None):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
                 'oldCityCode': old_city_code,
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(
+                    map(lambda area: '_'.join(map(str, area))))
 
-            return self.fetch( 'sales', param )
+            return self.fetch('sales', param)
 
-        def farmers_age_structure( self, pref_code, city_code, old_city_code, farmers_type, gender_type,  matter,  add_area = None ):
-            param = {
-                'prefCode': pref_code,
-                'cityCode': city_code,
-                'oldCityCode': old_city_code,
-                'farmersType': farmers_type,
-                'genderType': gender_type,
-                'matter': matter
-            }
-            if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
-
-            return self.fetch( 'farmersAgeStructure', param )
-
-        def farmers_average_age( self, pref_code, city_code, old_city_code, farmers_type, gender_type,  matter,  add_area = None ):
+        def farmers_age_structure(self, pref_code, city_code, old_city_code, farmers_type, gender_type,  matter,  add_area=None):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
@@ -154,22 +143,36 @@ class Agriculture( Context ):
                 'matter': matter
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
 
-            return self.fetch( 'farmersAverageAge', param )
+            return self.fetch('farmersAgeStructure', param)
 
-        def related_business( self, pref_code, city_code, old_city_code, add_area = None ):
+        def farmers_average_age(self, pref_code, city_code, old_city_code, farmers_type, gender_type,  matter,  add_area=None):
+            param = {
+                'prefCode': pref_code,
+                'cityCode': city_code,
+                'oldCityCode': old_city_code,
+                'farmersType': farmers_type,
+                'genderType': gender_type,
+                'matter': matter
+            }
+            if add_area is not None:
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
+
+            return self.fetch('farmersAverageAge', param)
+
+        def related_business(self, pref_code, city_code, old_city_code, add_area=None):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
                 'oldCityCode': old_city_code,
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
 
-            return self.fetch( 'relatedBusiness', param )
+            return self.fetch('relatedBusiness', param)
 
-        def average_of_corporate( self, pref_code, city_code, old_city_code, matter, add_area = None ):
+        def average_of_corporate(self, pref_code, city_code, old_city_code, matter, add_area=None):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
@@ -177,221 +180,224 @@ class Agriculture( Context ):
                 'matter': matter
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
 
-            return self.fetch( 'averageOfCorporate', param )
+            return self.fetch('averageOfCorporate', param)
 
-    def __init__( self, accessor, parent_category = '' ):
-        super( Agriculture, self ).__init__( accessor, parent_category )
+    def __init__(self, accessor, parent_category=''):
+        super(Agriculture, self).__init__(accessor, parent_category)
 
-        self.__sales = Agriculture.Sales( accessor, self.category )
-        self.__land = Agriculture.Land( accessor, self.category )
-        self.__all = Agriculture.All( accessor, self.category )
-        self.__crops = Agriculture.Crops( accessor, self.category )
+        self.__sales = Agriculture.Sales(accessor, self.category)
+        self.__land = Agriculture.Land(accessor, self.category)
+        self.__all = Agriculture.All(accessor, self.category)
+        self.__crops = Agriculture.Crops(accessor, self.category)
 
     @property
-    def sales( self ):
+    def sales(self):
         return self.__sales
 
     @property
-    def land( self ):
+    def land(self):
         return self.__land
 
     @property
-    def all( self ):
+    def all(self):
         return self.__all
 
     @property
-    def crops( self ):
+    def crops(self):
         return self.__crops
 
-class Forestry( Context ):
-    class Income( Context ):
-        def for_stacked( self, pref_code, city_code, add_area = None ):
+
+class Forestry(Context):
+    class Income(Context):
+        def for_stacked(self, pref_code, city_code, add_area=None):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
 
-            return self.fetch( 'forStacked', param )
+            return self.fetch('forStacked', param)
 
-        def for_sales( self, pref_code, city_code, add_area = None ):
+        def for_sales(self, pref_code, city_code, add_area=None):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
 
-            return self.fetch( 'forSales', param )
+            return self.fetch('forSales', param)
 
-        def for_contract_revenue( self, pref_code, city_code, add_area = None ):
+        def for_contract_revenue(self, pref_code, city_code, add_area=None):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
 
-            return self.fetch( 'forContractRevenue', param )
+            return self.fetch('forContractRevenue', param)
 
-        def for_sales_ratio( self, pref_code, city_code, matter, add_area = None ):
-            param = {
-                'prefCode': pref_code,
-                'cityCode': city_code,
-                'matter': matter
-            }
-            if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
-
-            return self.fetch( 'forSalesRatio', param )
-
-        def for_contract_revenue_ratio( self, pref_code, city_code, matter, add_area = None ):
+        def for_sales_ratio(self, pref_code, city_code, matter, add_area=None):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
                 'matter': matter
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
 
-            return self.fetch( 'forContractRevenueRatio', param )
+            return self.fetch('forSalesRatio', param)
 
-        def all_portfolio( self, year, pref_code, city_code, area_type, add_area = None ):
+        def for_contract_revenue_ratio(self, pref_code, city_code, matter, add_area=None):
+            param = {
+                'prefCode': pref_code,
+                'cityCode': city_code,
+                'matter': matter
+            }
+            if add_area is not None:
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
+
+            return self.fetch('forContractRevenueRatio', param)
+
+        def all_portfolio(self, year, pref_code, city_code, area_type, add_area=None):
             param = {
                 'year': year,
                 'prefCode': pref_code,
                 'cityCode': city_code,
-                'areaType':area_type
+                'areaType': area_type
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(
+                    map(lambda area: '_'.join(map(str, area))))
 
-            return self.fetch( 'allPortfolio', param )
+            return self.fetch('allPortfolio', param)
 
-        def all_for_stacked( self, pref_code, city_code, add_area = None ):
+        def all_for_stacked(self, pref_code, city_code, add_area=None):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
 
-            return self.fetch( 'allForStacked', param )
+            return self.fetch('allForStacked', param)
 
-    def __init__( self, accessor, parent_category = '' ):
-        super( Forestry, self ).__init__( accessor, parent_category )
+    def __init__(self, accessor, parent_category=''):
+        super(Forestry, self).__init__(accessor, parent_category)
 
-        self.__income = Forestry.Income( accessor, self.category )
+        self.__income = Forestry.Income(accessor, self.category)
 
     @property
-    def income( self ):
+    def income(self):
         return self.__income
 
-class Fishery( Context ):
-    class Sea( Context ):
-        def staple( self, pref_code, city_code, add_area = None ):
+
+class Fishery(Context):
+    class Sea(Context):
+        def staple(self, pref_code, city_code, add_area=None):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
 
-            return self.fetch( 'staple', param )
+            return self.fetch('staple', param)
 
-        def total_sales( self, pref_code, city_code, add_area = None ):
+        def total_sales(self, pref_code, city_code, add_area=None):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
 
-            return self.fetch( 'totalSales', param )
+            return self.fetch('totalSales', param)
 
-        def management_unit_sales( self, pref_code, city_code, matter, add_area = None ):
-            param = {
-                'prefCode': pref_code,
-                'cityCode': city_code,
-                'matter': matter
-            }
-            if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
-
-            return self.fetch( 'managementUnitSales', param )
-
-        def sales( self, pref_code, city_code, matter, add_area = None ):
+        def management_unit_sales(self, pref_code, city_code, matter, add_area=None):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
                 'matter': matter
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
 
-            return self.fetch( 'sales', param )
+            return self.fetch('managementUnitSales', param)
 
-        def ship_value( self, pref_code, city_code, add_area = None ):
-            param = {
-                'prefCode': pref_code,
-                'cityCode': city_code,
-            }
-            if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
-
-            return self.fetch( 'shipValue', param )
-
-        def ship_ratio( self, pref_code, city_code, matter, add_area = None ):
+        def sales(self, pref_code, city_code, matter, add_area=None):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
                 'matter': matter
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
 
-            return self.fetch( 'shipRatio', param )
+            return self.fetch('sales', param)
 
-        def aquaculture_total_sales( self, pref_code, city_code, add_area = None ):
+        def ship_value(self, pref_code, city_code, add_area=None):
+            param = {
+                'prefCode': pref_code,
+                'cityCode': city_code,
+            }
+            if add_area is not None:
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
+
+            return self.fetch('shipValue', param)
+
+        def ship_ratio(self, pref_code, city_code, matter, add_area=None):
+            param = {
+                'prefCode': pref_code,
+                'cityCode': city_code,
+                'matter': matter
+            }
+            if add_area is not None:
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
+
+            return self.fetch('shipRatio', param)
+
+        def aquaculture_total_sales(self, pref_code, city_code, add_area=None):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
 
-            return self.fetch( 'aquacultureTotalSales', param )
+            return self.fetch('aquacultureTotalSales', param)
 
-        def aquaculture_management_unit_sales( self, pref_code, city_code, matter, add_area = None ):
+        def aquaculture_management_unit_sales(self, pref_code, city_code, matter, add_area=None):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
                 'matter': matter
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
 
-            return self.fetch( 'aquacultureManagementUnitSales', param )
+            return self.fetch('aquacultureManagementUnitSales', param)
 
-        def aquaculture_sales( self, pref_code, city_code, matter, add_area = None ):
+        def aquaculture_sales(self, pref_code, city_code, matter, add_area=None):
             param = {
                 'prefCode': pref_code,
                 'cityCode': city_code,
                 'matter': matter
             }
             if add_area is not None:
-                param['addArea'] = ','.join( map( lambda area: '_'.join( map( str, area ) ) ) )
+                param['addArea'] = ','.join(map(lambda area: '_'.join(map(str, area)), add_area))
 
-            return self.fetch( 'aquacultureSales', param )
+            return self.fetch('aquacultureSales', param)
 
-    def __init__( self, accessor, parent_category = '' ):
-        super( Fishery, self ).__init__( accessor, parent_category )
+    def __init__(self, accessor, parent_category=''):
+        super(Fishery, self).__init__(accessor, parent_category)
 
-        self.__sea = Fishery.Sea( accessor, self.category )
+        self.__sea = Fishery.Sea(accessor, self.category)
 
     @property
-    def sea( self ):
+    def sea(self):
         return self.__sea
