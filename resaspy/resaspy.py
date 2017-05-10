@@ -16,14 +16,14 @@ from .partner import Partner
 
 class Resaspy( Context ):
     class Accessor:
-        def __init__( self, key, version, cache_name = None ):
+        def __init__( self, key, version, cache_name = None, backend = None, **backend_options ):
             self.__key = key
             self.__version = version
             self.__endpoint = 'https://opendata.resas-portal.go.jp'
             if cache_name is not None:
-                requests_cache.install_cache(cache_name);
+                requests_cache.install_cache(cache_name, backend, **backend_options);
 
-        def fetch( self, resource, params = {}, enable_cache = True ):
+        def fetch(self, resource, params = {}):
             api_url = '%s/api/%s/%s' % ( self.__endpoint, self.__version, resource )
             return requests.get( api_url, params = params,  headers = { 'X-API-KEY': self.__key } ).json()
 
@@ -89,8 +89,8 @@ class Resaspy( Context ):
     def category( self ):
         return ''
 
-    def __init__( self, key, cache_name = None ):
-        accessor = self.Accessor( key, 'v1', cache_name )
+    def __init__( self, key, cache_name = None, backend = None, **backend_options ):
+        accessor = self.Accessor( key, 'v1', cache_name, backend, **backend_options )
         super( Resaspy, self ).__init__( accessor )
 
         self.__industries = Resaspy.Industries( accessor )
